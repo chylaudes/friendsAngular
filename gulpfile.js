@@ -17,7 +17,6 @@ var gulp  = require('gulp'),
 //if you cause an error it will not kick you out
 gulp.task('scripts', function(){
   gulp.src(['scripts/**/*.js'])
-  .pipe(reload({stream: true}))
 })
 
 //minifies css!
@@ -35,8 +34,6 @@ gulp.task('css', function(){
 //creating a html tasks, watching it!
 gulp.task('html', function(){
   gulp.src('*.html')
-  .pipe(reload({stream: true}))
-  return gutil.log('html is running')
 });
 
 //creating the browser-sync tasks
