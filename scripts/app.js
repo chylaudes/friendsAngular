@@ -1,7 +1,6 @@
 angular.module('friendsJeopardyApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngSanitize'])
        .config(config);
 
-
 ////////////
 // ROUTES //    //  SAVE THIS FOR LATER
 ////////////

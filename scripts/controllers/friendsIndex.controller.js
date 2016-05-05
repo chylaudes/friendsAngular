@@ -3,15 +3,35 @@ angular.module('friendsJeopardyApp')
 
 FriendsIndexController.$inject = ['$uibModal'];
 function FriendsIndexController(   $uibModal  ) {
-  console.log("HELLO")
   var vm = this;
-  vm.helloWorld = 'hello world';
-  vm.teamPlayers=[]
-
-
+  vm.teams=[];
+  vm.currentTeam = {};
+  vm.disabled = false;
+  var count  = 0
   // initialization
-  console.log(vm.helloWorld);
   vm.items = ['item1', 'item2', 'item3'];
+
+//WELCOME MODAL:
+var welcomeInstance = $uibModal.open({
+  animation: true,
+  templateUrl: 'templates/modalWelcome.html',
+  controller: 'ModalWelcomeCtrl',
+  controllerAs: 'welcomeCtrl',
+  size: 'lg',
+  backdrop: 'static'
+});
+
+welcomeInstance.result.then(function (teams){
+  vm.teams = teams;
+  vm.currentTeam = vm.teams[0];
+  vm.currentTeam.tdactive = true
+}, function (){
+  console.log('WELCOME MODAL DISMISSED AT:' + new Date());
+
+});
+
+
+
 
 // MODAL OPENING:
   vm.hello = function (e, card) {
@@ -20,6 +40,7 @@ function FriendsIndexController(   $uibModal  ) {
     templateUrl: 'templates/modalContent.html',
     controller: 'ModalInstanceCtrl',
     controllerAs: 'modalCtrl',
+    backdrop: 'static',
     resolve: {
       card: function () {
         return card;
@@ -33,6 +54,8 @@ function FriendsIndexController(   $uibModal  ) {
     console.log('Modal dismissed at: ' + new Date());
   });
 };
+
+
 
 
 ///QUESTIONS
