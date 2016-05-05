@@ -15,8 +15,6 @@ function FriendsIndexController(   $uibModal  ) {
 
 // MODAL OPENING:
   vm.hello = function (e, card) {
-  console.log("clicked", e);
-  console.log("card", card);
   var modalInstance = $uibModal.open({
     animation: true,
     templateUrl: 'templates/modalContent.html',
@@ -29,8 +27,8 @@ function FriendsIndexController(   $uibModal  ) {
     }
   });
 
-  modalInstance.result.then(function (selectedItem) {
-    vm.selected = selectedItem;
+  modalInstance.result.then(function (card) {
+    vm.card = card;
   }, function () {
     console.log('Modal dismissed at: ' + new Date());
   });

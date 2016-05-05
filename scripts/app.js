@@ -1,4 +1,4 @@
-angular.module('friendsJeopardyApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
+angular.module('friendsJeopardyApp', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'ngSanitize'])
        .config(config);
 
 

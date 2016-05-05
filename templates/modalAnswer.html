@@ -2,14 +2,13 @@
     <h3 class="modal-title">{{modalCtrl.card.catagory}}  {{modalCtrl.card.score}}</h3>
 </div>
 <div class="modal-body">
-  {{modalCtrl.card.question}}
-  <div class="container" ng-bind-html="modalCtrl.htmlVid"></div>
+  {{modalCtrl.card.answer}}
+  <div class="container" ng-bind-html="modalCtrl.htmlVidAnswer"></div>
+  <div ng-bind-html="youtube"></div>
 
-<div ng-bind-html="youtube"></div>
+
 </div>
 <div class="modal-footer">
     <p> {{modalCtrl.card.count}}</p>
-    <button class="btn btn-success" type="button" ng-click="modalCtrl.showAnswer($event, modalCtrl.card)">Show Answer</button>
     <button class="btn btn-warning" type="button" ng-click="modalCtrl.cancel()">Cancel</button>
-
 </div>
