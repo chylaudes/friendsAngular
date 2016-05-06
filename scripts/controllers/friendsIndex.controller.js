@@ -1,16 +1,14 @@
 angular.module('friendsJeopardyApp')
   .controller('FriendsIndexController', FriendsIndexController);
 
-FriendsIndexController.$inject = ['$uibModal'];
-function FriendsIndexController(   $uibModal  ) {
+FriendsIndexController.$inject = ['$uibModal', '$scope', 'TurnTrackerService'];
+function FriendsIndexController(   $uibModal,  $scope,  TurnTrackerService  ) {
   var vm = this;
-  vm.teams=[];
-  vm.currentTeam = {};
+  vm.teams= TurnTrackerService.teams;
+  vm.currentTeam = TurnTrackerService.currentTeam;
   vm.disabled = false;
-  var count  = 0
-  // initialization
-  vm.items = ['item1', 'item2', 'item3'];
-
+  var count  = 0;
+  console.log("HERE",TurnTrackerService.teams);
 //WELCOME MODAL:
 var welcomeInstance = $uibModal.open({
   animation: true,
@@ -22,12 +20,24 @@ var welcomeInstance = $uibModal.open({
 });
 
 welcomeInstance.result.then(function (teams){
+  TurnTrackerService.currentTeam = teams[0];
+  TurnTrackerService.teams = teams;
+
   vm.teams = teams;
-  vm.currentTeam = vm.teams[0];
-  vm.currentTeam.tdactive = true
+  vm.currentTeam = teams[0];
+
 }, function (){
   console.log('WELCOME MODAL DISMISSED AT:' + new Date());
 
+});
+
+//VM IS WATCHING
+$scope.$watch(function(){ return TurnTrackerService.currentTeam}, function (newVal, oldVal) {
+  if (typeof newVal !== 'undefined') {
+    console.log("OLD VALUE", oldVal);
+    console.log("NEW VALUE", newVal);
+      vm.currentTeam = TurnTrackerService.currentTeam;
+  }
 });
 
 
@@ -104,7 +114,7 @@ welcomeInstance.result.then(function (teams){
 		count: 30,
 		vidanswer:"<div class='col-sm-6' style= 'margin: auto'><div class='embed-responsive embed-responsive-16by9 hidden-xs'><iframe class='embed-responsive-item' src='https://www.youtube.com/embed/arlawWou2BU?start=1&end=23' allowfullscreen></iframe></div></div>"
 	}
- ]
+];
 
 vm.questionsPinnacleEvents = [
   {
@@ -152,7 +162,7 @@ vm.questionsPinnacleEvents = [
 		count: 30,
 		vidanswer:"<div class='col-sm-6' style= 'margin: auto'><div class='embed-responsive embed-responsive-16by9 hidden-xs'><iframe class='embed-responsive-item' src='https://www.youtube.com/embed/DpRfq7xHstg?start=65&end=97' allowfullscreen></iframe></div></div>",
 	}
-]
+];
 
 
  vm.questionsQuotes = [
@@ -198,7 +208,7 @@ vm.questionsPinnacleEvents = [
    		vidanswer:"<div class='col-sm-6' style= 'margin: auto'><div class='embed-responsive embed-responsive-16by9 hidden-xs'><iframe class='embed-responsive-item' src='https://www.youtube.com/embed/XeE2-VSrEtU?start=73&end=112' allowfullscreen></iframe></div></div>",
    	}
 
- ]
+ ];
 
  vm.questionsHolidayEp = [
    {
@@ -245,7 +255,7 @@ vm.questionsPinnacleEvents = [
  		vid: "<div class='col-sm-6' style= 'margin: auto'><div class='embed-responsive embed-responsive-16by9 hidden-xs'><iframe class='embed-responsive-item' src='https://www.youtube.com/embed/X5LPuZrQryc?start=38&end=086' allowfullscreen></iframe></div></div>",
  		vidanswer: "<div class='col-sm-6' style= 'margin: auto'><div class='embed-responsive embed-responsive-16by9 hidden-xs'><iframe class='embed-responsive-item' src='https://www.youtube.com/embed/X5LPuZrQryc?start=86&end=144' allowfullscreen></iframe></div></div>",
  	}
- ]
+];
 
 
  vm.questionsRandomQuirks = [
@@ -292,7 +302,7 @@ vm.questionsPinnacleEvents = [
      count: 30,
    }
 
- ]
+ ];
 }// end of FriendsIndexController
 
 
