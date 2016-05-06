@@ -32,13 +32,16 @@ welcomeInstance.result.then(function (teams){
 });
 
 //VM IS WATCHING
-$scope.$watch(function(){ return TurnTrackerService.currentTeam}, function (newVal, oldVal) {
+$scope.$watch(
+  function(){ return { currentTeam: TurnTrackerService.currentTeam, teams: TurnTrackerService.teams }}, function (newVal, oldVal) {
   if (typeof newVal !== 'undefined') {
     console.log("OLD VALUE", oldVal);
     console.log("NEW VALUE", newVal);
       vm.currentTeam = TurnTrackerService.currentTeam;
+      vm.teams = TurnTrackerService.teams
+
   }
-});
+}, true);
 
 
 

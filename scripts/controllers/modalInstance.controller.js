@@ -3,14 +3,14 @@ angular.module('friendsJeopardyApp')
 
 ModalInstanceCtrl.$inject = ['$uibModalInstance', '$uibModal', '$interval', '$sce', 'TurnTrackerService', 'card'];
 
-function ModalInstanceCtrl(  $uibModalInstance,    $uibModal,   $interval,   $sce,   TurnTrackerService,   card ) {
+function ModalInstanceCtrl(   $uibModalInstance,    $uibModal,   $interval,   $sce,   TurnTrackerService,   card ) {
   var vm = this;
   vm.card = card;
   vm.htmlVidAnswer = $sce.trustAsHtml(card.vidanswer);
 
   vm.htmlVid = $sce.trustAsHtml(card.vid);
   vm.count = card.count;
-
+  vm.teams = TurnTrackerService.teams
   $interval(function() {
             if (vm.count > 0) {
               vm.count = vm.count - 1;
@@ -32,22 +32,25 @@ function ModalInstanceCtrl(  $uibModalInstance,    $uibModal,   $interval,   $sc
       }
     });
 
-//results of the secondModalInstance
+    //results of the secondModalInstance
     modalInstanceSecond.result.then(function (){
       TurnTrackerService.count++;
       TurnTrackerService.changeTurns();
-
     }, function (){
       console.log('SECOND MODAL DISMISSED AT:' + new Date());
-
     });
-};//end of showAnswer
+  };//end of showAnswer
 
+  vm.subtractPoints = function (){
+
+  };//end of subtractPoints
   vm.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
-  vm.ok = function () {
+  vm.addPoints = function () {
+
+    TurnTrackerService.teams[event.target.dataset.indx].score += this.card.score
     $uibModalInstance.close();
-  };
+  };//end of addPoints
 
 }
