@@ -20,7 +20,7 @@ function ModalWelcomeCtrl(  $uibModalInstance,    $uibModal,   $interval,  $sce)
       alert("Reached the Maxium of Players! Time to Start the Game!");
     } else {
       vm.teams.push(vm.newTeam);
-      vm.newTeam = { score: 0 }
+      vm.newTeam = { score: 0 };
       vm.startGame = false;
     }
   };

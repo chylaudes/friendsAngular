@@ -8,6 +8,7 @@ function FriendsIndexController(   $uibModal,  $scope,  TurnTrackerService  ) {
   vm.currentTeam = TurnTrackerService.currentTeam;
   vm.disabled = false;
   var count  = 0;
+  vm.winner = {}
   console.log("HERE",TurnTrackerService.teams);
 //WELCOME MODAL:
 var welcomeInstance = $uibModal.open({
@@ -33,16 +34,30 @@ welcomeInstance.result.then(function (teams){
 
 //VM IS WATCHING
 $scope.$watch(
-  function(){ return { currentTeam: TurnTrackerService.currentTeam, teams: TurnTrackerService.teams }}, function (newVal, oldVal) {
+  function(){ return { currentTeam: TurnTrackerService.currentTeam, teams: TurnTrackerService.teams, winner: TurnTrackerService.winningTeam }}, function (newVal, oldVal) {
   if (typeof newVal !== 'undefined') {
     console.log("OLD VALUE", oldVal);
     console.log("NEW VALUE", newVal);
       vm.currentTeam = TurnTrackerService.currentTeam;
       vm.teams = TurnTrackerService.teams
 
+      if ( JSON.stringify(newVal.winner) !== JSON.stringify({}) ) {
+        debugger
+        vm.winner = newVal.winner
+
+        var winningModal = $uibModal.open({
+          animation: true,
+          templateUrl: 'templates/modalWinner.html',
+          controller: 'ModalWinnerCtrl',
+          controllerAs: 'winnerCtrl',
+          backdrop: 'static',
+          resolve: {
+            winner: vm.winner
+          }
+        });
+      }//END OF NEW VAL IF STATEMENT
   }
 }, true);
-
 
 
 
@@ -307,26 +322,3 @@ vm.questionsPinnacleEvents = [
 
  ];
 }// end of FriendsIndexController
-
-
-
-
-
-// function ( $uibModalInstance ) {
-//   var vm = this;
-//   vm.ok = function () {
-//     debugger
-//     console.log("okay");
-//     $uibModalInstance.dismiss('cancel')
-//   };
-//
-//   vm.cancel = function () {
-//     console.log("cancel");
-//     $uibModalInstance.dismiss('cancel');
-//   };
-// },
-// controllerAs:'ModalService',
-
-
-// Please note that $uibModalInstance represents a modal window (instance) dependency.
-// It is not the same as the $uibModal service used above.

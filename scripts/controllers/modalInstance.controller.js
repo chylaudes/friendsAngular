@@ -10,7 +10,9 @@ function ModalInstanceCtrl(   $uibModalInstance,    $uibModal,   $interval,   $s
 
   vm.htmlVid = $sce.trustAsHtml(card.vid);
   vm.count = card.count;
-  vm.teams = TurnTrackerService.teams
+  vm.teams = TurnTrackerService.teams;
+
+  vm.disabled = false;
   $interval(function() {
             if (vm.count > 0) {
               vm.count = vm.count - 1;
@@ -36,19 +38,21 @@ function ModalInstanceCtrl(   $uibModalInstance,    $uibModal,   $interval,   $s
     modalInstanceSecond.result.then(function (){
       TurnTrackerService.count++;
       TurnTrackerService.changeTurns();
+      TurnTrackerService.winningCount++;
+      TurnTrackerService.winner();
     }, function (){
       console.log('SECOND MODAL DISMISSED AT:' + new Date());
     });
   };//end of showAnswer
 
   vm.subtractPoints = function (){
-
+    TurnTrackerService.teams[event.target.dataset.indx].score -= this.card.score
   };//end of subtractPoints
   vm.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
+    $uibModalInstance.close();
   };
-  vm.addPoints = function () {
 
+  vm.addPoints = function () {
     TurnTrackerService.teams[event.target.dataset.indx].score += this.card.score
     $uibModalInstance.close();
   };//end of addPoints
