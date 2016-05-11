@@ -27,6 +27,7 @@ function ModalInstanceCtrl(   $uibModalInstance,    $uibModal,   $interval,   $s
       controller: 'ModalInstanceCtrl',
       controllerAs: 'modalCtrl',
       backdrop: 'static',
+      windowClass: 'modal-aq',
       resolve: {
         card: function(){
           return card;
@@ -46,14 +47,14 @@ function ModalInstanceCtrl(   $uibModalInstance,    $uibModal,   $interval,   $s
   };//end of showAnswer
 
   vm.subtractPoints = function (){
-    TurnTrackerService.teams[event.target.dataset.indx].score -= this.card.score
+    TurnTrackerService.teams[event.target.dataset.indx].score -= this.card.score;
   };//end of subtractPoints
   vm.cancel = function () {
     $uibModalInstance.close();
   };
 
   vm.addPoints = function () {
-    TurnTrackerService.teams[event.target.dataset.indx].score += this.card.score
+    TurnTrackerService.teams[event.target.dataset.indx].score += this.card.score;
     $uibModalInstance.close();
   };//end of addPoints
 

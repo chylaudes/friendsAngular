@@ -2,13 +2,13 @@ angular.module('friendsJeopardyApp')
   .controller('FriendsIndexController', FriendsIndexController);
 
 FriendsIndexController.$inject = ['$uibModal', '$scope', 'TurnTrackerService'];
-function FriendsIndexController(   $uibModal,  $scope,  TurnTrackerService  ) {
+function FriendsIndexController(   $uibModal,  $scope,  TurnTrackerService) {
   var vm = this;
   vm.teams= TurnTrackerService.teams;
   vm.currentTeam = TurnTrackerService.currentTeam;
   vm.disabled = false;
   var count  = 0;
-  vm.winner = {}
+  vm.winner = {};
   console.log("HERE",TurnTrackerService.teams);
 //WELCOME MODAL:
 var welcomeInstance = $uibModal.open({
@@ -16,8 +16,9 @@ var welcomeInstance = $uibModal.open({
   templateUrl: 'templates/modalWelcome.html',
   controller: 'ModalWelcomeCtrl',
   controllerAs: 'welcomeCtrl',
-  size: 'lg',
-  backdrop: 'static'
+  backdrop: 'static',
+  windowClass: "modal-welcome",
+  size: "sm"
 });
 
 welcomeInstance.result.then(function (teams){
@@ -39,11 +40,10 @@ $scope.$watch(
     console.log("OLD VALUE", oldVal);
     console.log("NEW VALUE", newVal);
       vm.currentTeam = TurnTrackerService.currentTeam;
-      vm.teams = TurnTrackerService.teams
+      vm.teams = TurnTrackerService.teams;
 
       if ( JSON.stringify(newVal.winner) !== JSON.stringify({}) ) {
-        debugger
-        vm.winner = newVal.winner
+        vm.winner = newVal.winner;
 
         var winningModal = $uibModal.open({
           animation: true,
@@ -69,6 +69,7 @@ $scope.$watch(
     controller: 'ModalInstanceCtrl',
     controllerAs: 'modalCtrl',
     backdrop: 'static',
+    windowClass: 'modal-aq',
     resolve: {
       card: function () {
         return card;

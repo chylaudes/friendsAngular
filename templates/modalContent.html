@@ -6,6 +6,6 @@
   <div class="container vid" ng-bind-html="modalCtrl.htmlVid"></div>
 </div>
 <div class="modal-footer">
-    <p>{{modalCtrl.count}}</p>
+    <div class="counter" ng-class="{red: modalCtrl.count < 11}">{{modalCtrl.count}}</div>
     <button class="btn btn-success" type="button" ng-click="modalCtrl.showAnswer($event, modalCtrl.card)">Show Answer</button>
 </div>
