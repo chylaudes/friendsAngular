@@ -28,7 +28,7 @@ function ModalInstanceCtrl(   $uibModalInstance,    $uibModal,   $interval,   $s
       controllerAs: 'modalCtrl',
       backdrop: 'static',
       windowClass: 'modal-aq',
-      keyboard: false,
+      keyboard: 'false',
       resolve: {
         card: function(){
           return card;

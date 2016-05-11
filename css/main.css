@@ -236,6 +236,24 @@ footer {
   letter-spacing: 2px;
 }
 
+.modal-winner button {
+  display: block;
+  margin-top: 29px;
+  font-size: 19px;
+  border: white;
+  background-color: black;
+  border-style: solid;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  width: 80%;
+  padding: 20px;
+  margin-left: 10%;
+}
+
+.modal-winner button:hover, .modal-winner button:visited {
+  background-color: #FA0CF6;
+  border-style:none;
+}
 .counter {
   font-weight: bold;
   font-size: 24px;
