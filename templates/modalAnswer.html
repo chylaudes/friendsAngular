@@ -11,5 +11,6 @@
 <br>
   <button class="btn btn-danger" type="button" ng-repeat="team in modalCtrl.teams" ng-class="{disabled: disabled}" ng-click="modalCtrl.subtractPoints(); disabled = true" data-inDx="{{modalCtrl.teams.indexOf(team)}}">{{team.name}}</button>
 <br>
-
+<p class="small">*Add points by pressing the <span class="green">green </span>button</p>
+<p class="small">*Subtract points by pressing the <span class="red">red</span> button</p>
 </div>

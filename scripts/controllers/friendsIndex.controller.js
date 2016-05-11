@@ -18,6 +18,7 @@ var welcomeInstance = $uibModal.open({
   controllerAs: 'welcomeCtrl',
   backdrop: 'static',
   windowClass: "modal-welcome",
+  keyboard: false,
   size: "sm"
 });
 
@@ -51,6 +52,8 @@ $scope.$watch(
           controller: 'ModalWinnerCtrl',
           controllerAs: 'winnerCtrl',
           backdrop: 'static',
+          windowClass: "modal-winner",
+            keyboard: false,
           resolve: {
             winner: vm.winner
           }
@@ -70,6 +73,7 @@ $scope.$watch(
     controllerAs: 'modalCtrl',
     backdrop: 'static',
     windowClass: 'modal-aq',
+    keyboard: false,
     resolve: {
       card: function () {
         return card;
@@ -306,8 +310,8 @@ vm.questionsPinnacleEvents = [
    },
 
    {
-     question:"What did Monica think Chandler was watching in his hotel room when she surprised him in Tulsa?",
-     answer: "Shark Porn",
+     question:"What was going to be Phoebe's fiance's name if she were to change her name to Princess Conseula Banana Hammock?",
+     answer: "Crap Bag",
      score: 400,
      catagory: "Random Quirks",
      count: 30,

@@ -213,6 +213,22 @@ footer {
   font-size: 1rem;
 }
 
+
+.modal-winner .modal-content {
+  background-color:black;
+  color:white;
+  text-align: center;
+}
+
+.modal-winner h2 {
+  margin-top:10px;
+  font-weight: bold;
+  display: inline;
+  letter-spacing: -2px;
+}
+.modal-winner .modal-body {
+  padding-bottom: 50px;
+}
 /*BUTTON*/
 .modal-welcome .btn {
   display: inline-block;
@@ -228,4 +244,15 @@ footer {
 }
 .red {
   color: red;
+}
+.green {
+  color: green;
+}
+
+
+.modal-aq .small {
+  font-size: 1.2rem;
+  margin-right:5px;
+  margin-bottom:0px;
+  margin-top:4px;
 }
