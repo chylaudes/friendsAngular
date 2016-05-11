@@ -9,7 +9,6 @@ var gulp  = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     del = require('del'),
     cssmin = require('gulp-cssmin');
-    deploy = require('gulp-gh-pages');
 
 
 
