@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="friendsJeopardyApp"> <!-- this should have an ng-app -->
+<head>
+  <title></title>
+  <meta charset="utf8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/main.min.css" />
+
+  <!-- build:js scripts/main.min.js -->
+  <script src="scripts/vendor/angular.min.js"></script>
+  <script src="scripts/vendor/ng-lodash.min.js"></script>
+  <script src="scripts/vendor/angular-animate.min.js"></script>
+  <script src="scripts/vendor/ui-bootstrap-tpls.js"></script>
+  <script src="scripts/vendor/angular-route.min.js"></script>
+  <script src="scripts/vendor/angular-sanitize.min.js"></script>
+  <!-- endbuild -->
+
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/modalInstance.controller.js"></script>
+  <script src="scripts/controllers/friendsIndex.controller.js"></script>
+  <script src="scripts/controllers/modalWelcome.controller.js"></script>
+  <script src="scripts/controllers/modalWinner.controller.js"></script>
+
+  <!-- directives -->
+  <script src="scripts/directives/gameCard.js"></script>
+  <!-- add services later -->
+  <script src="scripts/services/turnTracker.service.js"></script>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class='row'>
+      <div class="col-md-12">
+        <div ng-view></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

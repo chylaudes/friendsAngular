@@ -1,0 +1,44 @@
+<div class="col-md-6">
+<h1 class="headline">Friends Jeopardy</h1>
+</div>
+<div class="col-md-6">
+<h3 class="tablehead">Score Board:</h3>
+	<table class="table">
+		<thead>
+			<td class="bold" ng-repeat= "team in friendsIndexCtrl.teams" ng-class="{tdactive: team===friendsIndexCtrl.currentTeam }">{{team.name}}</td>
+		</thead>
+		<tr>
+			<td ng-repeat= "team in friendsIndexCtrl.teams"> {{team.score}}</td>
+		</tr>
+	</table>
+</div>
+<hr>
+<div class="panel">
+	<div class="panel-heading">
+		<div class="text-center col-md-2"><h4>Relationships</h4></div> <!-- offset to center odd number of columns -->
+		<div class="text-center col-md-2"><h4>Pinnacle Events</h4></div>
+		<div class="text-center col-md-2"><h4>Quotes</h4></div>
+		<div class="text-center col-md-2"><h4>Holiday Episodes</h4></div>
+		<div class="text-center col-md-2"><h4>Random Quirks</h4></div>
+		<div class="clearfix"></div> <!-- clearfix squares the header around the headings. it basically fixes everything -->
+	</div> <!-- panel-heading end -->
+	<div class="panel-body" id="main-board">
+		<div class="category col-md-2" id="relationships">
+      <game-card ng-repeat="card in friendsIndexCtrl.questionsRelationships" card="card" ng-class="{disabled: disabled}" ng-click="friendsIndexCtrl.hello($event, card); disabled = true"></game-card>
+		</div>
+		<div class="category col-md-2" id="pinnacle-events">
+      <game-card ng-repeat="card in friendsIndexCtrl.questionsPinnacleEvents" card="card" ng-class="{disabled: disabled}" ng-click="friendsIndexCtrl.hello($event, card); disabled = true"></game-card>
+		</div>
+		<div class="category col-md-2" id="quotes">
+      <game-card ng-repeat="card in friendsIndexCtrl.questionsQuotes" card="card" ng-class="{disabled: disabled}" ng-click="friendsIndexCtrl.hello($event, card); disabled = true"></game-card>
+
+		</div>
+		<div class="category col-md-2" id="holiday-episodes">
+      <game-card ng-repeat="card in friendsIndexCtrl.questionsHolidayEp" card="card" ng-class="{disabled: disabled}" ng-click="friendsIndexCtrl.hello($event, card); disabled = true"></game-card>
+
+		</div>
+		<div class="category col-md-2" id="random-quirks">
+      <game-card ng-repeat="card in friendsIndexCtrl.questionsRandomQuirks" card="card" ng-class="{disabled: disabled}" ng-click="friendsIndexCtrl.hello($event, card); disabled = true"></game-card>
+		</div>
+	</div> <!-- panel-body end -->
+	</div> <!-- panel panel end -->

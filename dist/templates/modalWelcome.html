@@ -1,0 +1,27 @@
+<div class="large modal-header">
+    <h2 class="modal-title">Welcome to <br>Friends Jeopardy</h2>
+</div>
+<div class="large modal-body">
+<table class="table">
+  <thead>
+    <tr>
+     <th>Team Name:</th>
+     <th>Score:</th>
+   </tr>
+  </thead>
+    <tr>
+      <th> <h4 ng-repeat="team in welcomeCtrl.teams">{{team.name}}</h4> <h4 ng-bind="welcomeCtrl.newTeam.name"></h4></th>
+      <th><h4 ng-repeat="team in welcomeCtrl.teams">{{team.score}}</h4> </th>
+    </tr>
+</table>
+</div>
+
+<div class="modal-footer">
+  <form ng-submit="welcomeCtrl.createTeam()">
+  <div class="form-group">
+    <input type="text" autofocus class="form-control" id="newTeam" ng-disabled="welcomeCtrl.noTeam" ng-model="welcomeCtrl.newTeam.name"  placeholder="Enter Team's Name">
+  </div>
+  <p>*Press 'Enter' to add a Team <br> Maxium 5 Teams</p>
+</form>
+    <button class="btn btn-success" type="button" ng-click="welcomeCtrl.ok()" ng-disabled="welcomeCtrl.startGame">Start the Game</button>
+</div>

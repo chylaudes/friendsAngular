@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h3 class="modal-title">{{modalCtrl.card.catagory}}:  {{modalCtrl.card.score}}</h3>
+    <a href="" ng-click="modalCtrl.cancel()" >X</a>
+</div>
+<div class="modal-body">
+  <p>{{modalCtrl.card.answer}}</p>
+  <div class="container vid" ng-bind-html="modalCtrl.htmlVidAnswer"></div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-success" type="button" ng-repeat="team in modalCtrl.teams" ng-click="modalCtrl.addPoints()"  data-inDx="{{modalCtrl.teams.indexOf(team)}}">{{team.name}}</button>
+<br>
+  <button class="btn btn-danger" type="button" ng-repeat="team in modalCtrl.teams" ng-class="{disabled: disabled}" ng-click="modalCtrl.subtractPoints(); disabled = true" data-inDx="{{modalCtrl.teams.indexOf(team)}}">{{team.name}}</button>
+<br>
+<p class="small">*Add points by pressing the <span class="green">green </span>button</p>
+<p class="small">*Subtract points by pressing the <span class="red">red</span> button</p>
+</div>
